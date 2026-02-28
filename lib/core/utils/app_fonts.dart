@@ -81,6 +81,9 @@ class AppFonts {
   // Screen-Specific Sizes (from existing screens)
   // ──────────────────────────────────────────────────────────────────────────
 
+  static const double size32 = 32;
+  static const double size30 = 30;
+  static const double size25 = 25;
   static const double size23 = 23;
   static const double size20 = 20;
   static const double size19 = 19;

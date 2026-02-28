@@ -18,8 +18,8 @@ class AppTheme {
 
       // Color Scheme
       colorScheme: const ColorScheme.light(
-        primary: AppColors.primaryColor,
-        secondary: AppColors.green,
+        primary: AppColors.primary500,
+        secondary: AppColors.primary500,
         surface: AppColors.white,
         error: AppColors.red,
         onPrimary: AppColors.white,
@@ -76,7 +76,7 @@ class AppTheme {
           color: AppColors.black,
         ),
         bodySmall: AppTextStyles.bodySmallRegular.copyWith(
-          color: AppColors.greyText,
+          color: AppColors.grey600,
         ),
         labelLarge: AppTextStyles.bodyLargeMedium.copyWith(
           fontWeight: AppFonts.medium,
@@ -86,7 +86,7 @@ class AppTheme {
           color: AppColors.black,
         ),
         labelSmall: AppTextStyles.bodySmallRegular.copyWith(
-          color: AppColors.greyText,
+          color: AppColors.grey600,
         ),
       ),
 
@@ -129,7 +129,7 @@ class AppTheme {
       // Elevated Button Theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: AppColors.primary500,
           foregroundColor: AppColors.white,
           elevation: 2,
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),

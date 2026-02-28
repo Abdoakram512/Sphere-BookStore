@@ -18,15 +18,15 @@ class AppTextStyles {
   static TextStyle _style({
     required double fontSize,
     required FontWeight fontWeight,
-    required String fontFamily,
-    Color color = AppColors.charcoal,
+    required String fontName,
+    Color color = AppColors.grey900,
     double? height,
   }) {
-    return TextStyle(
+    return GoogleFonts.getFont(
+      fontName,
       fontSize: fontSize.sp,
       fontWeight: fontWeight,
       color: color,
-      fontFamily: fontFamily,
       height: height,
     );
   }
@@ -35,13 +35,13 @@ class AppTextStyles {
       _style(
         fontSize: size,
         fontWeight: weight ?? AppFonts.bold,
-        fontFamily: GoogleFonts.openSans().fontFamily!,
+        fontName: 'Open Sans',
       );
 
   static TextStyle _body({required double size, FontWeight? weight}) => _style(
     fontSize: size,
     fontWeight: weight ?? AppFonts.regular,
-    fontFamily: GoogleFonts.roboto().fontFamily!,
+    fontName: 'Roboto',
   );
 
   // ──────────────────────────────────────────────────────────────────────────
@@ -54,6 +54,14 @@ class AppTextStyles {
   static TextStyle get h4Bold => _heading(size: AppFonts.h4);
   static TextStyle get h5Bold => _heading(size: AppFonts.h5);
   static TextStyle get h6Bold => _heading(size: AppFonts.h6);
+
+  static TextStyle get h32Bold => _heading(size: AppFonts.size32);
+  static TextStyle get h30Bold => _heading(size: AppFonts.size30);
+  static TextStyle get h25Bold => _heading(size: AppFonts.size25);
+  static TextStyle get h20Bold => _heading(size: AppFonts.size20);
+
+  static TextStyle get h16Medium =>
+      _heading(size: AppFonts.h6, weight: AppFonts.medium);
 
   // ──────────────────────────────────────────────────────────────────────────
   // Body Styles (Roboto)
@@ -72,38 +80,53 @@ class AppTextStyles {
   static TextStyle get bodySmallRegular =>
       _body(size: AppFonts.bodyS, weight: AppFonts.regular);
 
-  // // =============================================================================
-  // // BuildContext extension — access styles via context.h1Bold, etc.
-  // // =============================================================================
+  static TextStyle get body32Bold =>
+      _body(size: AppFonts.size32, weight: AppFonts.bold);
 
-  // extension TextStylesExtension on BuildContext {
-  //   // Headings
-  //   TextStyle get h1Bold => AppTextStyles.h1Bold;
-  //   TextStyle get h2Bold => AppTextStyles.h2Bold;
-  //   TextStyle get h3Bold => AppTextStyles.h3Bold;
-  //   TextStyle get h4Bold => AppTextStyles.h4Bold;
-  //   TextStyle get h5Bold => AppTextStyles.h5Bold;
-  //   TextStyle get h6Bold => AppTextStyles.h6Bold;
+  static TextStyle get body32Medium =>
+      _body(size: AppFonts.size32, weight: AppFonts.medium);
+  static TextStyle get body30Medium =>
+      _body(size: AppFonts.size30, weight: AppFonts.medium);
+  static TextStyle get body25Medium =>
+      _body(size: AppFonts.size25, weight: AppFonts.medium);
+  static TextStyle get body20Medium =>
+      _body(size: AppFonts.size20, weight: AppFonts.medium);
 
-  //   // Body
-  //   TextStyle get bodyXLargeMedium => AppTextStyles.bodyXLargeMedium;
-  //   TextStyle get bodyLargeSemiBold => AppTextStyles.bodyLargeSemiBold;
-  //   TextStyle get bodyLargeMedium => AppTextStyles.bodyLargeMedium;
-  //   TextStyle get bodySmallSemiBold => AppTextStyles.bodySmallSemiBold;
-  //   TextStyle get bodySmallMedium => AppTextStyles.bodySmallMedium;
-  //   TextStyle get bodySmallRegular => AppTextStyles.bodySmallRegular;
+  static TextStyle get body14Medium =>
+      _body(size: AppFonts.size14, weight: AppFonts.medium);
+}
 
-  //   // Legacy / Screen-specific
-  //   TextStyle get font23Bold => AppTextStyles.font23Bold;
-  //   TextStyle get font23Medium => AppTextStyles.font23Medium;
-  //   TextStyle get font20Bold => AppTextStyles.font20Bold;
-  //   TextStyle get font19Bold => AppTextStyles.font19Bold;
-  //   TextStyle get font15SemiBold => AppTextStyles.font15SemiBold;
-  //   TextStyle get font15Medium => AppTextStyles.font15Medium;
-  //   TextStyle get font15Regular => AppTextStyles.font15Regular;
-  //   TextStyle get font14Bold => AppTextStyles.font14Bold;
-  //   TextStyle get font14Regular => AppTextStyles.font14Regular;
-  //   TextStyle get font13Medium => AppTextStyles.font13Medium;
-  //   TextStyle get font13Regular => AppTextStyles.font13Regular;
-  // }
+// =============================================================================
+// BuildContext extension — access styles via context.h1Bold, etc.
+// =============================================================================
+
+extension TextStylesExtension on BuildContext {
+  // Headings
+  TextStyle get h1Bold => AppTextStyles.h1Bold;
+  TextStyle get h2Bold => AppTextStyles.h2Bold;
+  TextStyle get h3Bold => AppTextStyles.h3Bold;
+  TextStyle get h4Bold => AppTextStyles.h4Bold;
+  TextStyle get h5Bold => AppTextStyles.h5Bold;
+  TextStyle get h6Bold => AppTextStyles.h6Bold;
+
+  TextStyle get h32Bold => AppTextStyles.h32Bold;
+  TextStyle get h30Bold => AppTextStyles.h30Bold;
+  TextStyle get h25Bold => AppTextStyles.h25Bold;
+  TextStyle get h20Bold => AppTextStyles.h20Bold;
+  TextStyle get h16Medium => AppTextStyles.h16Medium;
+
+  // Body
+  TextStyle get bodyXLargeMedium => AppTextStyles.bodyXLargeMedium;
+  TextStyle get bodyLargeSemiBold => AppTextStyles.bodyLargeSemiBold;
+  TextStyle get bodyLargeMedium => AppTextStyles.bodyLargeMedium;
+  TextStyle get bodySmallSemiBold => AppTextStyles.bodySmallSemiBold;
+  TextStyle get bodySmallMedium => AppTextStyles.bodySmallMedium;
+  TextStyle get bodySmallRegular => AppTextStyles.bodySmallRegular;
+
+  TextStyle get body32Bold => AppTextStyles.body32Bold;
+  TextStyle get body32Medium => AppTextStyles.body32Medium;
+  TextStyle get body30Medium => AppTextStyles.body30Medium;
+  TextStyle get body25Medium => AppTextStyles.body25Medium;
+  TextStyle get body20Medium => AppTextStyles.body20Medium;
+  TextStyle get body14Medium => AppTextStyles.body14Medium;
 }

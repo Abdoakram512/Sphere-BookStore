@@ -17,4 +17,5 @@ class AppIcons {
   static const String circleOutline = 'assets/icons/circle_outline.svg';
   static const String calendar = 'assets/icons/calendar.svg';
   static const String wallet = 'assets/icons/wallet.svg';
+  static const String appLogo = 'assets/icons/appLogo.svg';
 }

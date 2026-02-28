@@ -11,7 +11,10 @@ library;
 const String splashScreen = '/';
 
 /// Login screen route
-const String loginScreen = '/login';
+const String loginScreen = '/login_screen';
+
+/// Onboarding page view route
+const String onBoarding = '/onboarding';
 
 /// Biometric login screen route
 const String biometricLoginScreen = '/biometric_login';
