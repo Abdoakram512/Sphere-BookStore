@@ -1,16 +1,23 @@
-# sphere_book_app
+# 📚 Sphere BookStore
 
-A new Flutter project.
+A modern Flutter-based bookstore application.
 
-## Getting Started
+## 🚀 Features
+- Browse books
+- View book details
+- Clean and scalable architecture
+- Responsive UI
 
-This project is a starting point for a Flutter application.
+## 🛠 Tech Stack
+- Flutter
+- Dart
+- Clean Architecture
 
-A few resources to get you started if this is your first Flutter project:
+## 📂 Project Structure
+lib/
+ ├── features/
+ ├── core/
+ └── main.dart
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 👨‍💻 Author
+Abdulrahman Akram
