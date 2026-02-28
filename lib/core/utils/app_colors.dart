@@ -34,4 +34,13 @@ class AppColors {
   static const Color orange = Color(0xFFFF8C39);
   static const Color red = Color(0xFFEF5A56);
   static const Color blue = Color(0xFF3784FB);
+
+  // Aliases for themes
+  static const Color primaryColor = primary500;
+  static const Color green = Color(0xFF4CAF50);
+  static const Color greyText = grey600;
+  static const Color hintTextColor = grey400;
+  static const Color greyBorder = grey200;
+  static const Color cardBorder = grey100;
+  static const Color charcoal = Color(0xFF333333);
 }

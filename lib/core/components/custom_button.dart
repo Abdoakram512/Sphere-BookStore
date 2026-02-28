@@ -70,11 +70,12 @@ class CustomButton extends StatelessWidget {
               : Stack(
                   children: [
                     Center(
-                      child: AppTextStyles(
-                        data: text.tr(),
-                        textColor: textColor ?? AppColors.white,
-                        fontFamily: fontFamily,
-                      ).buttonLSB(),
+                      child: Text(
+                        text.tr(),
+                        style: AppTextStyles.font14Bold.copyWith(
+                          color: textColor ?? AppColors.white,
+                        ),
+                      ),
                     ),
                     if (hasSuffixIcon)
                       Padding(

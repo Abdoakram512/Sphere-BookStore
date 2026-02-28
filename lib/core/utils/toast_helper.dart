@@ -281,7 +281,6 @@ class _ToastCardState extends State<_ToastCard>
                               child: Text(
                                 config.title,
                                 style: TextStyle(
-                                  fontFamily: AppFonts.appFontFamily,
                                   fontWeight: AppFonts.semiBold,
                                   fontSize: AppFonts.bodyS.sp,
                                   color: config.accentColor,
@@ -325,7 +324,6 @@ class _ToastCardState extends State<_ToastCard>
                         Text(
                           widget.message,
                           style: TextStyle(
-                            fontFamily: AppFonts.appFontFamily,
                             fontWeight: AppFonts.regular,
                             fontSize: AppFonts.bodyXS.sp,
                             color: AppColors.black,

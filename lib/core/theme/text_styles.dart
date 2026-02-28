@@ -1,281 +1,131 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:sphere_book_app/core/utils/app_colors.dart';
 import 'package:sphere_book_app/core/utils/app_fonts.dart';
 
-/// Text styles for the application
+/// Text styles for the application.
 ///
-/// Use AppTextStyles to create consistent text widgets across the app.
-/// Renamed from AppTextStyles to AppTextStyles for better clarity.
+/// - **Headings** use Open Sans (via GoogleFonts)
+/// - **Body** text uses Roboto (via GoogleFonts)
 class AppTextStyles {
-  const AppTextStyles({
-    required this.data,
-    this.textColor = Colors.white,
-    this.textAlign,
-    this.overflow,
-    this.maxLines,
-    this.selectionColor,
-    this.semanticsLabel,
-    this.textDirection,
-    this.textWidthBasis,
-    this.textScaler,
-    this.textDecoration,
-    this.wordSpacing,
-    this.letterSpacing,
-    this.lineHeight,
-    this.fontFamily,
-  });
+  const AppTextStyles._();
 
-  final String data;
-  final Color? textColor;
-  final TextAlign? textAlign;
-  final TextOverflow? overflow;
-  final int? maxLines;
-  final Color? selectionColor;
-  final String? semanticsLabel;
-  final TextDirection? textDirection;
-  final TextWidthBasis? textWidthBasis;
-  final TextScaler? textScaler;
-  final TextDecoration? textDecoration;
-  final double? wordSpacing, letterSpacing;
-  final double? lineHeight;
-  final String? fontFamily;
+  // ──────────────────────────────────────────────────────────────────────────
+  // Private helpers
+  // ──────────────────────────────────────────────────────────────────────────
 
-  Text _font({required FontWeight fontWeight, required double fontSize}) {
-    return Text(
-      data,
-      softWrap: true,
-      textAlign: textAlign,
-      overflow: overflow,
-      maxLines: maxLines,
-      selectionColor: selectionColor,
-      semanticsLabel: semanticsLabel,
-      textDirection: textDirection,
-      textWidthBasis: textWidthBasis,
-      textScaler: textScaler,
-      style: TextStyle(
-        fontFamily: fontFamily,
-        fontWeight: fontWeight,
-        fontSize: fontSize.sp,
-        color: textColor,
-        decoration: textDecoration,
-        wordSpacing: wordSpacing,
-        letterSpacing: letterSpacing,
-        height: lineHeight,
-      ),
+  static TextStyle _style({
+    required double fontSize,
+    required FontWeight fontWeight,
+    required String fontFamily,
+    Color color = AppColors.charcoal,
+    double? height,
+  }) {
+    return TextStyle(
+      fontSize: fontSize.sp,
+      fontWeight: fontWeight,
+      color: color,
+      fontFamily: fontFamily,
+      height: height,
     );
   }
 
-  /// Display Font Sizes:
-  Text displayLB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.displayL);
-  Text displayLSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.displayL);
-  Text displayLM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.displayL);
-  Text displayLR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.displayL);
+  static TextStyle _heading({required double size, FontWeight? weight}) =>
+      _style(
+        fontSize: size,
+        fontWeight: weight ?? AppFonts.bold,
+        fontFamily: GoogleFonts.openSans().fontFamily!,
+      );
 
-  Text displayMB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.displayM);
-  Text displayMSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.displayM);
-  Text displayMM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.displayM);
-  Text displayMR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.displayM);
+  static TextStyle _body({required double size, FontWeight? weight}) => _style(
+    fontSize: size,
+    fontWeight: weight ?? AppFonts.regular,
+    fontFamily: GoogleFonts.roboto().fontFamily!,
+  );
 
-  Text displaySB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.displayS);
-  Text displaySSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.displayS);
-  Text displaySM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.displayS);
-  Text displaySR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.displayS);
+  // ──────────────────────────────────────────────────────────────────────────
+  // Heading Styles (Open Sans)
+  // ──────────────────────────────────────────────────────────────────────────
 
-  /// Heading Font Sizes:
-  Text h0B() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.h0);
-  Text h0SB() => _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.h0);
-  Text h0M() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.h0);
-  Text h0R() => _font(fontWeight: AppFonts.regular, fontSize: AppFonts.h0);
+  static TextStyle get h1Bold => _heading(size: AppFonts.h1);
+  static TextStyle get h2Bold => _heading(size: AppFonts.h2);
+  static TextStyle get h3Bold => _heading(size: AppFonts.h3);
+  static TextStyle get h4Bold => _heading(size: AppFonts.h4);
+  static TextStyle get h5Bold => _heading(size: AppFonts.h5);
+  static TextStyle get h6Bold => _heading(size: AppFonts.h6);
 
-  Text h1LB() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.h1L);
-  Text h1LSB() => _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.h1L);
-  Text h1LM() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.h1L);
-  Text h1LR() => _font(fontWeight: AppFonts.regular, fontSize: AppFonts.h1L);
+  // ──────────────────────────────────────────────────────────────────────────
+  // Body Styles (Roboto)
+  // ──────────────────────────────────────────────────────────────────────────
 
-  Text h1B() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.h1);
-  Text h1SB() => _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.h1);
-  Text h1M() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.h1);
-  Text h1R() => _font(fontWeight: AppFonts.regular, fontSize: AppFonts.h1);
+  static TextStyle get bodyXLargeMedium =>
+      _body(size: AppFonts.bodyXL, weight: AppFonts.medium);
+  static TextStyle get bodyLargeSemiBold =>
+      _body(size: AppFonts.bodyL, weight: AppFonts.semiBold);
+  static TextStyle get bodyLargeMedium =>
+      _body(size: AppFonts.bodyL, weight: AppFonts.medium);
+  static TextStyle get bodySmallSemiBold =>
+      _body(size: AppFonts.bodyS, weight: AppFonts.semiBold);
+  static TextStyle get bodySmallMedium =>
+      _body(size: AppFonts.bodyS, weight: AppFonts.medium);
+  static TextStyle get bodySmallRegular =>
+      _body(size: AppFonts.bodyS, weight: AppFonts.regular);
 
-  Text h2B() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.h2);
-  Text h2SB() => _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.h2);
-  Text h2M() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.h2);
-  Text h2R() => _font(fontWeight: AppFonts.regular, fontSize: AppFonts.h2);
+  // ──────────────────────────────────────────────────────────────────────────
+  // Screen-Specific / Legacy Getters
+  // ──────────────────────────────────────────────────────────────────────────
 
-  Text h3B() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.h3);
-  Text h3SB() => _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.h3);
-  Text h3M() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.h3);
-  Text h3R() => _font(fontWeight: AppFonts.regular, fontSize: AppFonts.h3);
+  static TextStyle get font23Bold => _heading(size: AppFonts.size23);
+  static TextStyle get font23Medium =>
+      _heading(size: AppFonts.size23, weight: AppFonts.medium);
+  static TextStyle get font20Bold => _heading(size: AppFonts.size20);
+  static TextStyle get font19Bold => _heading(size: AppFonts.size19);
+  static TextStyle get font15SemiBold =>
+      _body(size: AppFonts.size15, weight: AppFonts.semiBold);
+  static TextStyle get font15Medium =>
+      _body(size: AppFonts.size15, weight: AppFonts.medium);
+  static TextStyle get font15Regular => _body(size: AppFonts.size15);
+  static TextStyle get font14Bold =>
+      _body(size: AppFonts.bodyM, weight: AppFonts.bold);
+  static TextStyle get font14Regular => _body(size: AppFonts.bodyM);
+  static TextStyle get font13Medium =>
+      _body(size: AppFonts.size13, weight: AppFonts.medium);
+  static TextStyle get font13Regular =>
+      _body(size: AppFonts.size13, weight: AppFonts.regular);
+}
 
-  Text h4B() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.h4);
-  Text h4SB() => _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.h4);
-  Text h4M() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.h4);
-  Text h4R() => _font(fontWeight: AppFonts.regular, fontSize: AppFonts.h4);
+// =============================================================================
+// BuildContext extension — access styles via context.h1Bold, etc.
+// =============================================================================
 
-  Text h5B() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.h5);
-  Text h5SB() => _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.h5);
-  Text h5M() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.h5);
-  Text h5R() => _font(fontWeight: AppFonts.regular, fontSize: AppFonts.h5);
+extension TextStylesExtension on BuildContext {
+  // Headings
+  TextStyle get h1Bold => AppTextStyles.h1Bold;
+  TextStyle get h2Bold => AppTextStyles.h2Bold;
+  TextStyle get h3Bold => AppTextStyles.h3Bold;
+  TextStyle get h4Bold => AppTextStyles.h4Bold;
+  TextStyle get h5Bold => AppTextStyles.h5Bold;
+  TextStyle get h6Bold => AppTextStyles.h6Bold;
 
-  Text h6B() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.h6);
-  Text h6SB() => _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.h6);
-  Text h6M() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.h6);
-  Text h6R() => _font(fontWeight: AppFonts.regular, fontSize: AppFonts.h6);
+  // Body
+  TextStyle get bodyXLargeMedium => AppTextStyles.bodyXLargeMedium;
+  TextStyle get bodyLargeSemiBold => AppTextStyles.bodyLargeSemiBold;
+  TextStyle get bodyLargeMedium => AppTextStyles.bodyLargeMedium;
+  TextStyle get bodySmallSemiBold => AppTextStyles.bodySmallSemiBold;
+  TextStyle get bodySmallMedium => AppTextStyles.bodySmallMedium;
+  TextStyle get bodySmallRegular => AppTextStyles.bodySmallRegular;
 
-  Text h7B() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.h7);
-  Text h7SB() => _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.h7);
-  Text h7M() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.h7);
-  Text h7R() => _font(fontWeight: AppFonts.regular, fontSize: AppFonts.h7);
-  Text h7L() => _font(fontWeight: AppFonts.light, fontSize: AppFonts.h7);
-
-  /// Body Font Sizes:
-  Text bodyXLB() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.bodyXL);
-  Text bodyXLSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.bodyXL);
-  Text bodyXLM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.bodyXL);
-  Text bodyXLR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.bodyXL);
-
-  Text bodyLB() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.bodyL);
-  Text bodyLSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.bodyL);
-  Text bodyLM() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.bodyL);
-  Text bodyLR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.bodyL);
-
-  Text bodyMB() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.bodyM);
-  Text bodyMSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.bodyM);
-  Text bodyMM() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.bodyM);
-  Text bodyMR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.bodyM);
-
-  Text bodySB() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.bodyS);
-  Text bodySSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.bodyS);
-  Text bodySM() => _font(fontWeight: AppFonts.medium, fontSize: AppFonts.bodyS);
-  Text bodySR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.bodyS);
-
-  Text bodyXSB() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.bodyXS);
-  Text bodyXSSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.bodyXS);
-  Text bodyXSM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.bodyXS);
-  Text bodyXSR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.bodyXS);
-
-  /// Labels & Buttons:
-  Text buttonXXLB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.buttonXXL);
-  Text buttonXXLSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.buttonXXL);
-  Text buttonXXLM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.buttonXXL);
-  Text buttonXXLR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.buttonXXL);
-
-  Text buttonXLB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.buttonXL);
-  Text buttonXLSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.buttonXL);
-  Text buttonXLM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.buttonXL);
-  Text buttonXLR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.buttonXL);
-
-  Text buttonLB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.buttonL);
-  Text buttonLSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.buttonL);
-  Text buttonLM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.buttonL);
-  Text buttonLR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.buttonL);
-
-  Text buttonMB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.buttonM);
-  Text buttonMSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.buttonM);
-  Text buttonMM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.buttonM);
-  Text buttonMR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.buttonM);
-
-  Text buttonSB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.buttonS);
-  Text buttonSSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.buttonS);
-  Text buttonSM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.buttonS);
-  Text buttonSR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.buttonS);
-
-  Text buttonXSB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.buttonXS);
-  Text buttonXSSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.buttonXS);
-  Text buttonXSM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.buttonXS);
-  Text buttonXSR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.buttonXS);
-
-  Text labelXLB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.labelXL);
-  Text labelXLSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.labelXL);
-  Text labelXLM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.labelXL);
-  Text labelXLR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.labelXL);
-
-  Text labelLB() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.labelL);
-  Text labelLSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.labelL);
-  Text labelLM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.labelL);
-  Text labelLR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.labelL);
-
-  Text labelMB() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.labelM);
-  Text labelMSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.labelM);
-  Text labelMM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.labelM);
-  Text labelMR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.labelM);
-
-  Text labelSB() => _font(fontWeight: AppFonts.bold, fontSize: AppFonts.labelS);
-  Text labelSSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.labelS);
-  Text labelSM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.labelS);
-  Text labelSR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.labelS);
-
-  Text labelXSB() =>
-      _font(fontWeight: AppFonts.bold, fontSize: AppFonts.labelXS);
-  Text labelXSSB() =>
-      _font(fontWeight: AppFonts.semiBold, fontSize: AppFonts.labelXS);
-  Text labelXSM() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.labelXS);
-  Text labelXSR() =>
-      _font(fontWeight: AppFonts.regular, fontSize: AppFonts.labelXS);
-
-  /// Caption, Overline & Tiny:
-  Text size13M() =>
-      _font(fontWeight: AppFonts.medium, fontSize: AppFonts.size13);
+  // Legacy / Screen-specific
+  TextStyle get font23Bold => AppTextStyles.font23Bold;
+  TextStyle get font23Medium => AppTextStyles.font23Medium;
+  TextStyle get font20Bold => AppTextStyles.font20Bold;
+  TextStyle get font19Bold => AppTextStyles.font19Bold;
+  TextStyle get font15SemiBold => AppTextStyles.font15SemiBold;
+  TextStyle get font15Medium => AppTextStyles.font15Medium;
+  TextStyle get font15Regular => AppTextStyles.font15Regular;
+  TextStyle get font14Bold => AppTextStyles.font14Bold;
+  TextStyle get font14Regular => AppTextStyles.font14Regular;
+  TextStyle get font13Medium => AppTextStyles.font13Medium;
+  TextStyle get font13Regular => AppTextStyles.font13Regular;
 }

@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sphere_book_app/core/config/routes/route_constants.dart';
 import 'package:sphere_book_app/core/theme/text_styles.dart';
 import 'package:sphere_book_app/core/utils/app_colors.dart';
-import 'package:sphere_book_app/core/utils/app_fonts.dart';
 
 class NavigationHeader extends StatelessWidget {
   final String? title;
@@ -40,16 +39,12 @@ class NavigationHeader extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsetsDirectional.symmetric(horizontal: 16.w),
-          child: context.locale.languageCode == 'ar'
-              ? AppTextStyles(
-                  data: title?.tr() ?? '',
-                  textColor: AppColors.black,
-                  fontFamily: AppFonts.appFontFamily,
-                ).h5R()
-              : AppTextStyles(
-                  data: title?.tr() ?? '',
-                  textColor: AppColors.black,
-                ).h3R(),
+          child: Text(
+            title?.tr() ?? '',
+            style: context.locale.languageCode == 'ar'
+                ? AppTextStyles.font15Regular.copyWith(color: AppColors.black)
+                : AppTextStyles.font23Medium.copyWith(color: AppColors.black),
+          ),
         ),
         const Spacer(),
       ],

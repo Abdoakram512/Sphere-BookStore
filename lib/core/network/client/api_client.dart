@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:sphere_book_app/core/api/error/failures.dart';
+import 'package:sphere_book_app/core/network/error/failures.dart';
 
-abstract class ApiConsumer {
+/// Abstract API client contract for all HTTP operations.
+abstract class ApiClient {
   Future<Either<Failure, Map<String, dynamic>>> get(
     String url, {
     Map<String, dynamic>? headers,
@@ -13,17 +14,6 @@ abstract class ApiConsumer {
   });
 
   Future<Either<Failure, Map<String, dynamic>>> post(
-    String url, {
-    Map<String, dynamic>? data,
-    FormData? formData,
-    Map<String, dynamic>? queryParameters,
-    Map<String, dynamic>? headers,
-    CancelToken? cancelToken,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  });
-
-  Future<Either<Failure, Map<String, dynamic>>> postFormData(
     String url, {
     Map<String, dynamic>? data,
     FormData? formData,

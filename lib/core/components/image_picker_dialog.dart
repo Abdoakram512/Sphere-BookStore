@@ -17,10 +17,10 @@ void showImagePickerDialog({
         backgroundColor: AppColors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Center(
-          child: AppTextStyles(
-            data: 'add_picture'.tr(),
-            textColor: AppColors.black,
-          ).h5R(),
+          child: Text(
+            'add_picture'.tr(),
+            style: AppTextStyles.font15Regular.copyWith(color: AppColors.black),
+          ),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -75,10 +75,12 @@ Widget _buildImagePickerOption({
       child: Row(
         children: [
           Expanded(
-            child: AppTextStyles(
-              data: label,
-              textColor: isDestructive ? Colors.red : AppColors.black,
-            ).labelMB(),
+            child: Text(
+              label,
+              style: AppTextStyles.font13Medium.copyWith(
+                color: isDestructive ? Colors.red : AppColors.black,
+              ),
+            ),
           ),
           Icon(
             icon,

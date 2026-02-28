@@ -1,55 +1,60 @@
-/*
-**********Project Name: tawfeer
-**********File Name: app_fonts
-**********Created At: 11-January-2026
-**********Author: Abdulrahman Akram
-**********Description:
-*/
-
 import 'package:flutter/material.dart';
 
+/// Centralized font weight and size constants for the application.
+///
+/// Font families are managed by GoogleFonts in [AppTextStyles]:
+/// - **Open Sans** → Headings
+/// - **Roboto** → Body text
 class AppFonts {
-  /// Font Family:
-  static String appFontFamily = "IBMPlexSansArabic";
-  static String rubikFontFamily = "Rubik";
+  const AppFonts._();
 
-  /// Font Weights:
-  static FontWeight black = FontWeight.w900;
-  static FontWeight extraBold = FontWeight.w800;
-  static FontWeight bold = FontWeight.w700;
-  static FontWeight semiBold = FontWeight.w600;
-  static FontWeight medium = FontWeight.w500;
-  static FontWeight regular = FontWeight.w400;
-  static FontWeight light = FontWeight.w300;
-  static FontWeight extraLight = FontWeight.w200;
-  static FontWeight thin = FontWeight.w100;
+  // ──────────────────────────────────────────────────────────────────────────
+  // Font Weights
+  // ──────────────────────────────────────────────────────────────────────────
 
-  /// Font sizes:
+  static const FontWeight black = FontWeight.w900;
+  static const FontWeight extraBold = FontWeight.w800;
+  static const FontWeight bold = FontWeight.w700;
+  static const FontWeight semiBold = FontWeight.w600;
+  static const FontWeight medium = FontWeight.w500;
+  static const FontWeight regular = FontWeight.w400;
+  static const FontWeight light = FontWeight.w300;
+  static const FontWeight extraLight = FontWeight.w200;
+  static const FontWeight thin = FontWeight.w100;
 
-  // Display Sizes:
+  // ──────────────────────────────────────────────────────────────────────────
+  // Display Sizes
+  // ──────────────────────────────────────────────────────────────────────────
+
   static const double displayL = 57;
   static const double displayM = 45;
   static const double displayS = 36;
 
-  // Heading Sizes:
-  static const double h0 = 40;
-  static const double h1L = 36;
-  static const double h1 = 32; // Screen title
-  static const double h2 = 28;
-  static const double h3 = 24;
-  static const double h4 = 22;
-  static const double h5 = 20;
-  static const double h6 = 18;
-  static const double h7 = 14;
+  // ──────────────────────────────────────────────────────────────────────────
+  // Heading Sizes (Open Sans)
+  // ──────────────────────────────────────────────────────────────────────────
 
-  // Body Sizes:
-  static const double bodyXL = 20;
-  static const double bodyL = 18;
-  static const double bodyM = 16;
-  static const double bodyS = 14;
-  static const double bodyXS = 12;
+  static const double h1 = 40;
+  static const double h2 = 32;
+  static const double h3 = 24; // also used as size23 ≈ 24
+  static const double h4 = 20;
+  static const double h5 = 18;
+  static const double h6 = 16;
 
+  // ──────────────────────────────────────────────────────────────────────────
+  // Body Sizes (Roboto)
+  // ──────────────────────────────────────────────────────────────────────────
+
+  static const double bodyXL = 18;
+  static const double bodyL = 16;
+  static const double bodyM = 14;
+  static const double bodyS = 12;
+  static const double bodyXS = 10;
+
+  // ──────────────────────────────────────────────────────────────────────────
   // Labels & Buttons
+  // ──────────────────────────────────────────────────────────────────────────
+
   static const double buttonXXL = 24;
   static const double buttonXL = 20;
   static const double buttonL = 18;
@@ -63,11 +68,22 @@ class AppFonts {
   static const double labelS = 11;
   static const double labelXS = 10;
 
+  // ──────────────────────────────────────────────────────────────────────────
   // Caption & Small Texts
+  // ──────────────────────────────────────────────────────────────────────────
+
   static const double caption = 12;
   static const double size13 = 13;
   static const double overline = 10;
   static const double tiny = 8;
 
-  // static double  = ;
+  // ──────────────────────────────────────────────────────────────────────────
+  // Screen-Specific Sizes (from existing screens)
+  // ──────────────────────────────────────────────────────────────────────────
+
+  static const double size23 = 23;
+  static const double size20 = 20;
+  static const double size19 = 19;
+  static const double size15 = 15;
+  static const double size14 = 14;
 }

@@ -2,14 +2,14 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:sphere_book_app/core/api/api_constants/api_constants.dart';
-import 'package:sphere_book_app/core/api/api_consumer/api_consumer.dart';
-import 'package:sphere_book_app/core/api/error/failures.dart';
+import 'package:sphere_book_app/core/network/constants/api_constants.dart';
+import 'package:sphere_book_app/core/network/client/api_client.dart';
+import 'package:sphere_book_app/core/network/error/failures.dart';
 
-class DioConsumer implements ApiConsumer {
+class DioClient implements ApiClient {
   final Dio dio;
 
-  DioConsumer({required this.dio}) {
+  DioClient({required this.dio}) {
     dio.options.baseUrl = ApiConstants.baseUrl;
     dio.options.connectTimeout = const Duration(seconds: 30);
     dio.options.receiveTimeout = const Duration(seconds: 30);
@@ -82,29 +82,6 @@ class DioConsumer implements ApiConsumer {
     } on DioException catch (e) {
       return Left(_handleDioException(e));
     }
-  }
-
-  @override
-  Future<Either<Failure, Map<String, dynamic>>> postFormData(
-    String url, {
-    Map<String, dynamic>? data,
-    FormData? formData,
-    Map<String, dynamic>? queryParameters,
-    Map<String, dynamic>? headers,
-    CancelToken? cancelToken,
-    ProgressCallback? onSendProgress,
-    ProgressCallback? onReceiveProgress,
-  }) async {
-    return post(
-      url,
-      data: data,
-      formData: formData,
-      queryParameters: queryParameters,
-      headers: headers,
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
   }
 
   @override
@@ -291,8 +268,6 @@ class DioConsumer implements ApiConsumer {
     if (response == null) {
       return const ServerFailure("Unknown error occurred");
     }
-    // Try to parse the error message from the response
-    // Common patterns: 'message', 'error', 'errors'
     final data = response.data;
     if (data is Map<String, dynamic>) {
       if (data.containsKey('errors')) {

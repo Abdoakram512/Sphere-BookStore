@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:sphere_book_app/core/utils/app_colors.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sphere_book_app/core/utils/app_fonts.dart';
 import 'package:sphere_book_app/core/utils/app_strings.dart' as app_strings;
 
@@ -97,7 +98,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           Text(
             widget.title!,
             style: TextStyle(
-              fontFamily: AppFonts.rubikFontFamily,
+              fontFamily: GoogleFonts.openSans().fontFamily,
               fontWeight: AppFonts.semiBold,
               fontSize: 16.sp,
               color: AppColors.black,
@@ -187,7 +188,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   TextStyle _textStyle() {
     return TextStyle(
-      fontFamily: AppFonts.appFontFamily,
       fontWeight: AppFonts.medium,
       fontSize: 14.sp,
       color: AppColors.black,
@@ -200,12 +200,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       labelStyle: TextStyle(
         color: AppColors.black,
         fontSize: 12.sp,
-        fontFamily: AppFonts.appFontFamily,
         fontWeight: FontWeight.bold,
       ),
       hintText: widget.hintText,
       hintStyle: TextStyle(
-        fontFamily: AppFonts.appFontFamily,
         fontWeight: AppFonts.regular,
         color: AppColors.black,
         fontSize: 14.sp,
