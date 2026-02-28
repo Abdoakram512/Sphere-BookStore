@@ -26,7 +26,7 @@ class SectionHeader extends StatelessWidget {
         SizedBox(width: 10.w),
         Text(
           title.tr(),
-          style: AppTextStyles.font15Regular.copyWith(
+          style: AppTextStyles.bodySmallRegular.copyWith(
             color: AppColors.black,
             height: 1.0,
           ),

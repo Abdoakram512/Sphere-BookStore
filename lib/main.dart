@@ -14,7 +14,6 @@ class SphereBookApp extends StatelessWidget {
       title: 'Sphere Book App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
       home: const Scaffold(body: Center(child: Text('Sphere Book App'))),
     );
   }

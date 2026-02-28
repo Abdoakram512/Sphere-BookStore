@@ -42,8 +42,12 @@ class NavigationHeader extends StatelessWidget {
           child: Text(
             title?.tr() ?? '',
             style: context.locale.languageCode == 'ar'
-                ? AppTextStyles.font15Regular.copyWith(color: AppColors.black)
-                : AppTextStyles.font23Medium.copyWith(color: AppColors.black),
+                ? AppTextStyles.bodySmallRegular.copyWith(
+                    color: AppColors.black,
+                  )
+                : AppTextStyles.bodyLargeMedium.copyWith(
+                    color: AppColors.black,
+                  ),
           ),
         ),
         const Spacer(),

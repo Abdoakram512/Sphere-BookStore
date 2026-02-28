@@ -72,60 +72,38 @@ class AppTextStyles {
   static TextStyle get bodySmallRegular =>
       _body(size: AppFonts.bodyS, weight: AppFonts.regular);
 
-  // ──────────────────────────────────────────────────────────────────────────
-  // Screen-Specific / Legacy Getters
-  // ──────────────────────────────────────────────────────────────────────────
+  // // =============================================================================
+  // // BuildContext extension — access styles via context.h1Bold, etc.
+  // // =============================================================================
 
-  static TextStyle get font23Bold => _heading(size: AppFonts.size23);
-  static TextStyle get font23Medium =>
-      _heading(size: AppFonts.size23, weight: AppFonts.medium);
-  static TextStyle get font20Bold => _heading(size: AppFonts.size20);
-  static TextStyle get font19Bold => _heading(size: AppFonts.size19);
-  static TextStyle get font15SemiBold =>
-      _body(size: AppFonts.size15, weight: AppFonts.semiBold);
-  static TextStyle get font15Medium =>
-      _body(size: AppFonts.size15, weight: AppFonts.medium);
-  static TextStyle get font15Regular => _body(size: AppFonts.size15);
-  static TextStyle get font14Bold =>
-      _body(size: AppFonts.bodyM, weight: AppFonts.bold);
-  static TextStyle get font14Regular => _body(size: AppFonts.bodyM);
-  static TextStyle get font13Medium =>
-      _body(size: AppFonts.size13, weight: AppFonts.medium);
-  static TextStyle get font13Regular =>
-      _body(size: AppFonts.size13, weight: AppFonts.regular);
-}
+  // extension TextStylesExtension on BuildContext {
+  //   // Headings
+  //   TextStyle get h1Bold => AppTextStyles.h1Bold;
+  //   TextStyle get h2Bold => AppTextStyles.h2Bold;
+  //   TextStyle get h3Bold => AppTextStyles.h3Bold;
+  //   TextStyle get h4Bold => AppTextStyles.h4Bold;
+  //   TextStyle get h5Bold => AppTextStyles.h5Bold;
+  //   TextStyle get h6Bold => AppTextStyles.h6Bold;
 
-// =============================================================================
-// BuildContext extension — access styles via context.h1Bold, etc.
-// =============================================================================
+  //   // Body
+  //   TextStyle get bodyXLargeMedium => AppTextStyles.bodyXLargeMedium;
+  //   TextStyle get bodyLargeSemiBold => AppTextStyles.bodyLargeSemiBold;
+  //   TextStyle get bodyLargeMedium => AppTextStyles.bodyLargeMedium;
+  //   TextStyle get bodySmallSemiBold => AppTextStyles.bodySmallSemiBold;
+  //   TextStyle get bodySmallMedium => AppTextStyles.bodySmallMedium;
+  //   TextStyle get bodySmallRegular => AppTextStyles.bodySmallRegular;
 
-extension TextStylesExtension on BuildContext {
-  // Headings
-  TextStyle get h1Bold => AppTextStyles.h1Bold;
-  TextStyle get h2Bold => AppTextStyles.h2Bold;
-  TextStyle get h3Bold => AppTextStyles.h3Bold;
-  TextStyle get h4Bold => AppTextStyles.h4Bold;
-  TextStyle get h5Bold => AppTextStyles.h5Bold;
-  TextStyle get h6Bold => AppTextStyles.h6Bold;
-
-  // Body
-  TextStyle get bodyXLargeMedium => AppTextStyles.bodyXLargeMedium;
-  TextStyle get bodyLargeSemiBold => AppTextStyles.bodyLargeSemiBold;
-  TextStyle get bodyLargeMedium => AppTextStyles.bodyLargeMedium;
-  TextStyle get bodySmallSemiBold => AppTextStyles.bodySmallSemiBold;
-  TextStyle get bodySmallMedium => AppTextStyles.bodySmallMedium;
-  TextStyle get bodySmallRegular => AppTextStyles.bodySmallRegular;
-
-  // Legacy / Screen-specific
-  TextStyle get font23Bold => AppTextStyles.font23Bold;
-  TextStyle get font23Medium => AppTextStyles.font23Medium;
-  TextStyle get font20Bold => AppTextStyles.font20Bold;
-  TextStyle get font19Bold => AppTextStyles.font19Bold;
-  TextStyle get font15SemiBold => AppTextStyles.font15SemiBold;
-  TextStyle get font15Medium => AppTextStyles.font15Medium;
-  TextStyle get font15Regular => AppTextStyles.font15Regular;
-  TextStyle get font14Bold => AppTextStyles.font14Bold;
-  TextStyle get font14Regular => AppTextStyles.font14Regular;
-  TextStyle get font13Medium => AppTextStyles.font13Medium;
-  TextStyle get font13Regular => AppTextStyles.font13Regular;
+  //   // Legacy / Screen-specific
+  //   TextStyle get font23Bold => AppTextStyles.font23Bold;
+  //   TextStyle get font23Medium => AppTextStyles.font23Medium;
+  //   TextStyle get font20Bold => AppTextStyles.font20Bold;
+  //   TextStyle get font19Bold => AppTextStyles.font19Bold;
+  //   TextStyle get font15SemiBold => AppTextStyles.font15SemiBold;
+  //   TextStyle get font15Medium => AppTextStyles.font15Medium;
+  //   TextStyle get font15Regular => AppTextStyles.font15Regular;
+  //   TextStyle get font14Bold => AppTextStyles.font14Bold;
+  //   TextStyle get font14Regular => AppTextStyles.font14Regular;
+  //   TextStyle get font13Medium => AppTextStyles.font13Medium;
+  //   TextStyle get font13Regular => AppTextStyles.font13Regular;
+  // }
 }

@@ -19,7 +19,9 @@ void showImagePickerDialog({
         title: Center(
           child: Text(
             'add_picture'.tr(),
-            style: AppTextStyles.font15Regular.copyWith(color: AppColors.black),
+            style: AppTextStyles.bodyLargeMedium.copyWith(
+              color: AppColors.black,
+            ),
           ),
         ),
         content: Column(
@@ -77,7 +79,7 @@ Widget _buildImagePickerOption({
           Expanded(
             child: Text(
               label,
-              style: AppTextStyles.font13Medium.copyWith(
+              style: AppTextStyles.bodyLargeMedium.copyWith(
                 color: isDestructive ? Colors.red : AppColors.black,
               ),
             ),
