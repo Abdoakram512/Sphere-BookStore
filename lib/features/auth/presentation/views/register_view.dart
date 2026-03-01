@@ -3,26 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sphere_book_app/core/components/custom_text_form_field.dart';
-import 'package:sphere_book_app/core/config/routes/route_constants.dart'
-    as routes;
 import 'package:sphere_book_app/core/theme/text_styles.dart';
 import 'package:sphere_book_app/core/utils/app_colors.dart';
-import 'package:sphere_book_app/core/utils/app_icons.dart';
 import 'package:sphere_book_app/features/auth/presentation/views/widgets/auth_footer.dart';
 import 'package:sphere_book_app/features/auth/presentation/views/widgets/auth_header.dart';
-import 'package:sphere_book_app/features/auth/presentation/views/widgets/social_auth_section.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class RegisterView extends StatefulWidget {
+  const RegisterView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegisterView> createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterViewState extends State<RegisterView> {
   late TapGestureRecognizer _tapRecognizer;
   final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -31,13 +28,14 @@ class _LoginViewState extends State<LoginView> {
     super.initState();
     _tapRecognizer = TapGestureRecognizer()
       ..onTap = () {
-        context.push(routes.registerScreen);
+        context.pop();
       };
   }
 
   @override
   void dispose() {
     _tapRecognizer.dispose();
+    nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     super.dispose();
@@ -55,8 +53,15 @@ class _LoginViewState extends State<LoginView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 AuthHeader(
-                  title: 'Welcome Back 👋',
-                  subtitle: 'Sign in to your account',
+                  title: 'Sign Up',
+                  subtitle: 'Create account and choose favorite menu',
+                ),
+                SizedBox(height: 24.h),
+                CustomTextFormField(
+                  title: 'Name',
+                  fillColor: AppColors.grey50,
+                  hintText: 'Your name',
+                  controller: nameController,
                 ),
                 SizedBox(height: 24.h),
                 CustomTextFormField(
@@ -69,21 +74,11 @@ class _LoginViewState extends State<LoginView> {
                 SizedBox(height: 24.h),
                 CustomTextFormField(
                   title: 'Password',
-                  prefixIconPath: AppIcons.passwordOutline,
+                  prefixIconPath: null, // CustomTextFormField handles this
                   fillColor: AppColors.grey50,
                   hintText: 'Your password',
                   obscureText: true,
                   controller: passwordController,
-                ),
-                SizedBox(height: 16.h),
-                Align(
-                  alignment: AlignmentDirectional.centerEnd,
-                  child: Text(
-                    'Forgot your password?',
-                    style: AppTextStyles.body14Medium.copyWith(
-                      color: AppColors.primary900,
-                    ),
-                  ),
                 ),
                 SizedBox(height: 24.h),
                 Center(
@@ -93,7 +88,7 @@ class _LoginViewState extends State<LoginView> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          // TODO: Implement login logic
+                          // TODO: Implement registration logic
                         }
                       },
                       style: ElevatedButton.styleFrom(
@@ -103,7 +98,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                       ),
                       child: Text(
-                        'Login',
+                        'Register',
                         style: AppTextStyles.h16Bold.copyWith(
                           color: AppColors.white,
                         ),
@@ -115,13 +110,13 @@ class _LoginViewState extends State<LoginView> {
                 Center(
                   child: RichText(
                     text: TextSpan(
-                      text: "Don't have an account? ",
+                      text: "Already have an account? ",
                       style: AppTextStyles.bodyLargeMedium.copyWith(
                         color: AppColors.grey500,
                       ),
                       children: [
                         TextSpan(
-                          text: "Sign Up",
+                          text: "Sign In",
                           style: AppTextStyles.bodyLargeMedium.copyWith(
                             color: AppColors.primary900,
                           ),
@@ -131,9 +126,31 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                 ),
+                SizedBox(height: 138.h),
+                Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 40.w),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        text: "By clicking Register, you agree to our\n ",
+                        style: AppTextStyles.bodySmallMedium.copyWith(
+                          color: AppColors.grey500,
+                          height: 1.6,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "Terms and Data Policy.",
+                            style: AppTextStyles.bodySmallSemiBold.copyWith(
+                              color: AppColors.grey900,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(height: 24.h),
-                SocialAuthSection(onGoogleTap: () {}, onAppleTap: () {}),
-                SizedBox(height: 100.h),
                 const AuthFooter(),
               ],
             ),

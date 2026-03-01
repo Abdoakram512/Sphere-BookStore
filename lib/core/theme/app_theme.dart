@@ -94,36 +94,38 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.white,
-        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+        contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 14.h),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: const BorderSide(color: AppColors.grey50, width: 1),
+          borderRadius: BorderRadius.circular(12.r),
+          borderSide: const BorderSide(color: AppColors.grey200, width: 1),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: const BorderSide(color: AppColors.grey50, width: 1),
+          borderRadius: BorderRadius.circular(12.r),
+          borderSide: const BorderSide(color: AppColors.grey200, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: const BorderSide(color: AppColors.black, width: 2),
+          borderRadius: BorderRadius.circular(12.r),
+          borderSide: const BorderSide(color: AppColors.primary900, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(12.r),
           borderSide: const BorderSide(color: AppColors.red, width: 1),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
-          borderSide: const BorderSide(color: AppColors.red, width: 2),
+          borderRadius: BorderRadius.circular(12.r),
+          borderSide: const BorderSide(color: AppColors.red, width: 1.5),
         ),
-        hintStyle: AppTextStyles.bodyLargeMedium.copyWith(
-          color: AppColors.black,
+        hintStyle: AppTextStyles.body16Regular.copyWith(
+          color: AppColors.grey400,
         ),
         labelStyle: AppTextStyles.bodyLargeMedium.copyWith(
-          color: AppColors.black,
+          color: AppColors.grey900,
         ),
         errorStyle: AppTextStyles.bodySmallRegular.copyWith(
           color: AppColors.red,
         ),
+        prefixIconColor: AppColors.grey400,
+        suffixIconColor: AppColors.grey400,
       ),
 
       // Elevated Button Theme

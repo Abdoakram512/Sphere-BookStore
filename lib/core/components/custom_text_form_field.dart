@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:sphere_book_app/core/utils/app_colors.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -187,39 +188,31 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   }
 
   TextStyle _textStyle() {
-    return TextStyle(
-      fontWeight: AppFonts.medium,
-      fontSize: 14.sp,
-      color: AppColors.black,
-    );
+    return Theme.of(context).textTheme.bodyMedium ??
+        TextStyle(
+          fontWeight: AppFonts.medium,
+          fontSize: 14.sp,
+          color: AppColors.black,
+        );
   }
 
   InputDecoration _inputDecoration() {
     return InputDecoration(
       labelText: widget.labelText,
-      labelStyle: TextStyle(
-        color: AppColors.black,
-        fontSize: 12.sp,
-        fontWeight: FontWeight.bold,
-      ),
       hintText: widget.hintText,
-      hintStyle: TextStyle(
-        fontWeight: AppFonts.regular,
-        color: AppColors.black,
-        fontSize: 14.sp,
-      ),
-      fillColor: widget.isShadowed ? Colors.transparent : widget.fillColor,
-      filled: widget.fillColor != null || widget.isShadowed,
-      contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
+      fillColor: widget.fillColor,
+      filled: widget.fillColor != null,
       prefixIcon: widget.prefixWidget ?? _buildPrefixIcon(),
       suffixIcon: widget.obscureText
           ? _buildVisibilityIcon()
           : widget.suffixIcon,
-      border: _buildBorder(),
-      enabledBorder: _buildBorder(),
-      focusedBorder: _buildBorder(isFocused: true),
-      errorBorder: _buildBorder(isError: true),
-      focusedErrorBorder: _buildBorder(isError: true, isFocused: true),
+      // If we want to override theme borders specifically for this instance:
+      enabledBorder: widget.borderColor != null || widget.borderRadius != null
+          ? _buildBorder()
+          : null,
+      focusedBorder: widget.borderColor != null || widget.borderRadius != null
+          ? _buildBorder(isFocused: true)
+          : null,
     );
   }
 
@@ -238,31 +231,23 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   Widget _buildVisibilityIcon() {
     return IconButton(
       onPressed: () => setState(() => _isVisible = !_isVisible),
-      icon: Icon(
-        _isVisible ? Icons.visibility : Icons.visibility_off,
-        color: AppColors.black,
-      ),
+      icon: _isVisible
+          ? FaIcon(FontAwesomeIcons.eye)
+          : FaIcon(FontAwesomeIcons.eyeSlash),
+      color: AppColors.grey900,
     );
   }
 
   InputBorder _buildBorder({bool isFocused = false, bool isError = false}) {
-    if (widget.noBorder) return InputBorder.none;
-
     final Color color = isError
         ? AppColors.red
         : (isFocused
-              ? (widget.borderColor ?? AppColors.black)
-              : (widget.borderColor ?? AppColors.grey50));
-
-    if (widget.isUnderLine) {
-      return UnderlineInputBorder(borderSide: BorderSide(color: color));
-    }
+              ? (widget.borderColor ?? AppColors.primary500)
+              : (widget.borderColor ?? AppColors.grey200));
 
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.r),
-      borderSide: widget.isShadowed && !isFocused && !isError
-          ? BorderSide.none
-          : BorderSide(color: color),
+      borderRadius: BorderRadius.circular(widget.borderRadius ?? 12.r),
+      borderSide: BorderSide(color: color, width: isFocused ? 1.5 : 1),
     );
   }
 }

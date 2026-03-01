@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:sphere_book_app/features/auth/presentation/views/login_view.dart';
 import 'package:sphere_book_app/core/helpers/cache_helpers.dart';
+import 'package:sphere_book_app/features/auth/presentation/views/register_view.dart';
 import 'package:sphere_book_app/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:sphere_book_app/features/splash/presentation/views/splash_view.dart';
 import 'package:sphere_book_app/core/config/routes/route_constants.dart'
@@ -20,6 +21,10 @@ class AppRouter {
       GoRoute(
         path: routes.loginScreen,
         builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: routes.registerScreen,
+        builder: (context, state) => const RegisterView(),
       ),
     ],
   );

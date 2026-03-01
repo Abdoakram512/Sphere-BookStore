@@ -20,7 +20,7 @@ const String onBoarding = '/onboarding';
 const String biometricLoginScreen = '/biometric_login';
 
 /// Registration screen route
-const String registerScreen = '/register';
+const String registerScreen = '/register_view';
 
 /// Create new password screen route (password reset flow)
 const String createNewPasswordScreen = '/create_new_password';

@@ -18,4 +18,8 @@ class AppIcons {
   static const String calendar = 'assets/icons/calendar.svg';
   static const String wallet = 'assets/icons/wallet.svg';
   static const String appLogo = 'assets/icons/appLogo.svg';
+  static const String arrowLeft = 'assets/icons/ArrowLeft.svg';
+  static const String passwordOutline = 'assets/icons/Password-Outline.svg';
+  static const String google = 'assets/icons/google.svg';
+  static const String apple = 'assets/icons/apple.svg';
 }

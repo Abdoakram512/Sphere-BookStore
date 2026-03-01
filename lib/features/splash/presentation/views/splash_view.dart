@@ -23,7 +23,7 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void _navigateToOnboarding() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
         context.go(routes.onBoarding);
       }
@@ -37,7 +37,7 @@ class _SplashViewState extends State<SplashView> {
       body: Center(
         child: TweenAnimationBuilder<double>(
           tween: Tween(begin: 0.0, end: 1.0),
-          duration: const Duration(seconds: 2),
+          duration: const Duration(seconds: 3),
           curve: Curves.easeInOut,
           builder: (context, value, child) {
             return Transform.scale(

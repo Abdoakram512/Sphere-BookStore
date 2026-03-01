@@ -60,8 +60,12 @@ class AppTextStyles {
   static TextStyle get h25Bold => _heading(size: AppFonts.size25);
   static TextStyle get h20Bold => _heading(size: AppFonts.size20);
 
+  static TextStyle get h16Bold =>
+      _heading(size: AppFonts.h6, weight: AppFonts.bold);
   static TextStyle get h16Medium =>
       _heading(size: AppFonts.h6, weight: AppFonts.medium);
+  static TextStyle get h16Regular =>
+      _heading(size: AppFonts.h6, weight: AppFonts.regular);
 
   // ──────────────────────────────────────────────────────────────────────────
   // Body Styles (Roboto)
@@ -94,6 +98,12 @@ class AppTextStyles {
 
   static TextStyle get body14Medium =>
       _body(size: AppFonts.size14, weight: AppFonts.medium);
+
+  static TextStyle get body16Medium =>
+      _body(size: AppFonts.bodyL, weight: AppFonts.medium);
+
+  static TextStyle get body16Regular =>
+      _body(size: AppFonts.bodyL, weight: AppFonts.regular);
 }
 
 // =============================================================================
@@ -113,7 +123,9 @@ extension TextStylesExtension on BuildContext {
   TextStyle get h30Bold => AppTextStyles.h30Bold;
   TextStyle get h25Bold => AppTextStyles.h25Bold;
   TextStyle get h20Bold => AppTextStyles.h20Bold;
+  TextStyle get h16Bold => AppTextStyles.h16Bold;
   TextStyle get h16Medium => AppTextStyles.h16Medium;
+  TextStyle get h16Regular => AppTextStyles.h16Regular;
 
   // Body
   TextStyle get bodyXLargeMedium => AppTextStyles.bodyXLargeMedium;
@@ -129,4 +141,6 @@ extension TextStylesExtension on BuildContext {
   TextStyle get body25Medium => AppTextStyles.body25Medium;
   TextStyle get body20Medium => AppTextStyles.body20Medium;
   TextStyle get body14Medium => AppTextStyles.body14Medium;
+  TextStyle get body16Medium => AppTextStyles.body16Medium;
+  TextStyle get body16Regular => AppTextStyles.body16Regular;
 }
